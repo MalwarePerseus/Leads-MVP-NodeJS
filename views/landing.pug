@@ -1,20 +1,24 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
-  form(action="/", method="post")
-    input( name="lead_email" type="email", placeholder="mail@example.com")
-    button(type="submit") Submit
-  if leads
-    h1 Leads
-    for lead in leads
-      p(id=lead.id) 
-        span #{lead.email}
-        |
-        a(href="/lead/" + lead.id) Details
-        |
-        button(onclick=`deleteLead('${lead.id}')`) Delete
-  //- script(src='https://code.jquery.com/jquery-3.2.1.min.js')
-  script(src='/javascripts/jquery.min.js')
-  script(src="/javascripts/lead.js")     
+doctype html
+html(lang='en')
+  include common/head.pug
+  +head("Leads Management | Node & Express")
+  body
+    h1= title
+    p Welcome to #{title}
+    form(action="/", method="post")
+      input( name="lead_email" type="email", placeholder="mail@example.com")
+      button(type="submit") Submit
+    if leads
+      h1 Leads
+      for lead in leads
+        p(id=lead.id) 
+          span #{lead.email}
+          |
+          a(href="/lead/" + lead.id) Details
+          |
+          button(onclick=`deleteLead('${lead.id}')`) Delete
+    //- script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+    //- script(src='/javascripts/jquery.min.js')
+    include common/footer.pug 
+    +footer()
+    script(src="/javascripts/lead.js")     
