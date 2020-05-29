@@ -1,8 +1,20 @@
 doctype html
 html(lang='en')
   include ../common/head.pug
-  +head("Leads Management | Node & Express")
+  +head("Edit Lead")
   body
-    form(action="/lead/" + lead.id + "/edit", method="POST")
-      input(type="email", name="lead_email", placeholder="example@domain.com", value=lead.email)
-      button(type="submit") Save
+    header
+      include ../common/navbar.pug
+      +navbar()
+    .container
+      .row.align.items.center
+        .col-md-6.order-md-1.text-center.text-md-left.pr-md-5
+          h1 Edit Lead  
+          form(action="/lead/" + lead.id + "/edit", method="POST")
+            .input-group-mb-3
+              input(type="email", name="lead_email", placeholder="example@domain.com", value=lead.email).form-control
+              br
+              .input-group-append
+                button(type="submit").btn.btn-primary Save
+      include ../common/footer.pug
+      +footer()          

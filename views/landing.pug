@@ -17,29 +17,10 @@ html(lang='en')
               input( name="lead_email" type="email", placeholder="mail@example.com").form-control
             div.input-group-append
               button(type="submit").btn.btn-primary Get Started
-      br 
-      br
-      
-      div.row
-        div.col-md-6
-          if leads
-            h1 Leads
-            table.table
-              thead
-                tr
-                  th(scope="col") Email
-                  th(scope="col") Actions
-                  th(scope="col")
-                tr
-              tbody
-                for lead in leads
-                  tr(id=lead.id)
-                    td
-                      span #{lead.email}
-                    td
-                      a(href="/lead/" + lead.id) Details
-                    td
-                      button(onclick=`deleteLead('${lead.id}')`).btn.btn-primary Delete
+        div.col-md-6.order-md-1.text-center.text-md-left.pr-md-5.pl-5
+          img(src="/images/1.gif").circc.ml-5    
+
+            
     //- if leads
     //-   h1 Leads
     //-   for lead in leads
