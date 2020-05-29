@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+    include ../common/head.pug
+    +head("Login | Leads MVP")
+    body
+        header
+            include ../common/navbar.pug
+            +navbar()
+        .container
+            .row
+                .col-sm-12.offset-md-3.col-md-6
+                    .jumbotron
+                        h2.text-center Login
+                        .row
+                            .col-sm-12.col-md-12.col-xs-12
+                                form(action="/login", method="POST")
+                                    .formgroup
+                                        label.small.mb-1.mt-3 Email :
+                                        input(type="email", name="email", placeholder="Enter Your Email", required=true).form-control
+                                        label.small.mb-1.mt-3 Password : 
+                                        input(type="password", name="password", required=true, placeholder="Enter Your Current Password").form-control
+                                        button.mt-3.btn.btn-primary(type="submit") Login 
+                                        p.mt-2.mb-0
+                                            | Forgot Your Password? #[a(href="#") Reset Here].
+                                        p.m-0
+                                            | Don't Have an account? #[a(href="/signup") Sign up Here].
+        include ../common/footer.pug
+        +footer()

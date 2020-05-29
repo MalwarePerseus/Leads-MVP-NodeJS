@@ -1,0 +1,27 @@
+doctype html
+html(lang='en')
+    include ../common/head.pug
+    +head("Sign Up | Leads MVP")
+    body
+        header
+            include ../common/navbar.pug
+            +navbar()
+        .container
+            .row
+                .col-sm-12.offset-md-3.col-md-6
+                    .jumbotron    
+                        h2.text-center Sign Up
+                        .row
+                            .col-sm-12.col-md-12
+                                form(action="/signup", method="POST")
+                                    .formgroup
+                                        label.small.mb-1.mt-3 Email :
+                                        input(placeholder='Please Enter Your Email', required=true, name="email", type="email", value="").form-control
+                                        label.small.mb-1.mt-3 Password :
+                                        input(type="password", name="password", value='', placeholder="Create A Password", required=true).form-control
+                                        button.btn.btn-primary.mt-3(type="submit") Submit
+                                        p.mt-2.mb-0
+                                            | Already have an account? #[a(href="/login") Log in Here].
+                                            
+        include ../common/footer.pug
+        +footer()                                    
