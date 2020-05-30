@@ -1,13 +1,14 @@
 let LocalStrategy = require('passport-local').Strategy;
 let bcrypt = require('bcrypt');
 let models = require('./models');
+let flash = require('connect-flash');
 
 const validPassword = function(user, password) {
     return bcrypt.compareSync(password, user.password);
 }
 
 module.exports = function(passport) {
-    passport.seriallizeUser(function(user, done) {
+    passport.serializeUser(function(user, done) {
         done(null, user.id)
     });
 
@@ -39,7 +40,7 @@ module.exports = function(passport) {
                 if (user == null) {
                     req.flash('message', 'Incorrect Credentials.')
                     return done(null, false)
-                } else if (user.password == null || userpassword == undefined) {
+                } else if (user.password == null || user.password == undefined) {
                     req.flash('message', 'You Need To Reset Your Password.')
                     return done(null, false)
                 } else if (!validPassword(user, password)) {

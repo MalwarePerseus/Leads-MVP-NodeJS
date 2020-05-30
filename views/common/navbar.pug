@@ -1,4 +1,4 @@
-mixin navbar()
+mixin navbar(user)
     div.nav.navabar.navbar-expand.navbar-light.bg-light
         a(href="/", aria-label="Perseus").navbar-brand.mr-0
         div.mr-md-2
@@ -9,6 +9,18 @@ mixin navbar()
                     a.nav-link(href="/") Home
                 li.nav-item
                     a.nav-link(href="/leads") Leads
-                    
+        .navbar-right
+            if user
+                span.navbar-text Hello #{user.email} ! |
+        .navbar-right
+            ul.navbar-nav.mr-auto
+                if !user
+                    li.nav-item
+                        a.nav-link(href="/signup") Sign Up 
+                    li.nav-item
+                        a.nav-link(href="/login") Log In 
+                else   
+                    li.nav-item
+                    a.nav-link(href="/logout") Logout 
     br
     br                    
